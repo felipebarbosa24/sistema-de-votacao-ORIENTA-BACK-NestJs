@@ -51,7 +51,6 @@ Certifique-se de ter o **Node.js** e o **npm** (ou Yarn/pnpm) instalados:
 1.  Clone o repositório:
     ```bash
     git clone https://github.com/felipebarbosa24/sistema-de-votacao-ORIENTA-BACK-2.git
-    cd sistema-de-votacao-orienta-back-2
     ```
 
 2.  Instale as dependências:
