@@ -11,8 +11,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   const config = new DocumentBuilder()
-    .setTitle('API FACEPE ORIENTA')
+    .setTitle('API ORIENTA - SISTEMA DE VOTAÇÃO')
     .setVersion('1.0')
+    .addBearerAuth()
     .addTag('votacao')
     .build();
   const document = SwaggerModule.createDocument(app, config);

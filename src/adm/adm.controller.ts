@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from '../auth/auth.service';
 import { AdmService } from './adm.service';
 import { CreateAdmDto } from './dto/create-adm.dto';
@@ -17,7 +17,7 @@ export class AdmController {
   @Post('login')
   async login(@Body() body: { name: string; password: string }) {
     const admin = await this.admSvc.validateAdmin(body.name, body.password);
-    if (!admin) return { error: 'invalid' };
+    if (!admin) throw new UnauthorizedException('Credenciais inválidas');
     return this.auth.login(admin);
   }
 }
