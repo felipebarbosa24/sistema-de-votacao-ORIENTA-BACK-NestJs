@@ -6,7 +6,7 @@ export type VoterDocument = Voter & Document;
 @Schema()
 export class Voter {
   @Prop({ required: true, unique: true })
-  cpf: string; // formatted or not — keep consistent on frontend
+  cpf: string;
 
   @Prop({ required: true })
   name: string;

@@ -9,7 +9,7 @@ export class Election {
   title: string;
 
   @Prop()
-  description: string;
+  description?: string;
 
   @Prop({ required: true })
   startDate: string;

@@ -1,19 +1,19 @@
 import { Controller, Post, Body, Get, Query, Delete, Param } from '@nestjs/common';
 import { PlatesService } from './plates.service';
+import { CreatePlateDto } from './dto/create-plate.dto';
 
 @Controller('plates')
 export class PlatesController {
   constructor(private svc: PlatesService) {}
 
   @Post()
-  create(@Body() payload: { idElection: string; name: string; number: number }) {
+  create(@Body() payload: CreatePlateDto) {
     return this.svc.create(payload);
   }
 
   @Get()
   list(@Query('idElection') idElection: string) {
-    if (!idElection) return this.svc.findByElection(null);
-    return this.svc.findByElection(idElection);
+    return this.svc.findByElection(idElection || null);
   }
 
   @Delete(':id')

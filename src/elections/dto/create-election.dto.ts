@@ -1,8 +1,8 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateElectionDto {
   @IsString() @IsNotEmpty() title: string;
-  @IsString() description?: string;
+  @IsString() @IsOptional() description?: string;
   @IsString() @IsNotEmpty() startDate: string;
   @IsString() @IsNotEmpty() endDate: string;
 }

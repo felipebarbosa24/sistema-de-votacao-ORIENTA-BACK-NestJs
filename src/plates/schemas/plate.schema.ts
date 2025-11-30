@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { Election } from '../../elections/schemas/election.schema';
 
 export type PlateDocument = Plate & Document;
 

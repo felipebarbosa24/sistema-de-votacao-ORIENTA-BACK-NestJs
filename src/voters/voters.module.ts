@@ -5,9 +5,7 @@ import { VotersService } from './voters.service';
 import { VotersController } from './voters.controller';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Voter.name, schema: VoterSchema }]),
-  ],
+  imports: [MongooseModule.forFeature([{ name: Voter.name, schema: VoterSchema }])],
   providers: [VotersService],
   controllers: [VotersController],
   exports: [VotersService],

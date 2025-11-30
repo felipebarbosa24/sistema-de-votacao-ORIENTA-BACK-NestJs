@@ -26,7 +26,9 @@ export class ElectionsService {
   }
 
   async update(id: string, payload: Partial<CreateElectionDto>) {
-    return this.electionModel.findByIdAndUpdate(id, payload, { new: true });
+    const e = await this.electionModel.findByIdAndUpdate(id, payload, { new: true }).lean();
+    if (!e) throw new NotFoundException('Election not found');
+    return e;
   }
 
   async remove(id: string) {
@@ -34,7 +36,7 @@ export class ElectionsService {
   }
 
   async closeElection(id: string) {
-    const e = await this.electionModel.findByIdAndUpdate(id, { status: 'closed' }, { new: true });
+    const e = await this.electionModel.findByIdAndUpdate(id, { status: 'closed' }, { new: true }).lean();
     if (!e) throw new NotFoundException('Election not found');
     return e;
   }

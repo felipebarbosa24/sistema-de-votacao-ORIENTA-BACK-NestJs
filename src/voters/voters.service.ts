@@ -7,12 +7,12 @@ import { Model } from 'mongoose';
 export class VotersService {
   constructor(@InjectModel(Voter.name) private voterModel: Model<VoterDocument>) {}
 
-  create(payload: { cpf: string; name: string }) {
+  async create(payload: { cpf: string; name: string }) {
     const v = new this.voterModel(payload);
     return v.save();
   }
 
-  findAll() {
+  async findAll() {
     return this.voterModel.find().lean();
   }
 

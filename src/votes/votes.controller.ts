@@ -1,12 +1,13 @@
 import { Controller, Post, Body, Get, Query } from '@nestjs/common';
 import { VotesService } from './votes.service';
+import { CreateVoteDto } from './dto/create-vote.dto';
 
 @Controller('votes')
 export class VotesController {
   constructor(private svc: VotesService) {}
 
   @Post()
-  register(@Body() payload: { idVoter: string; idPlate: string }) {
+  register(@Body() payload: CreateVoteDto) {
     return this.svc.registerVote(payload);
   }
 

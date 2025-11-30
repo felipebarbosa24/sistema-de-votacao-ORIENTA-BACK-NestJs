@@ -14,6 +14,10 @@ export class AdmService {
     return a.save();
   }
 
+  async findByName(name: string) {
+    return this.admModel.findOne({ name });
+  }
+
   async validateAdmin(name: string, password: string) {
     const adm = await this.admModel.findOne({ name });
     if (!adm) return null;

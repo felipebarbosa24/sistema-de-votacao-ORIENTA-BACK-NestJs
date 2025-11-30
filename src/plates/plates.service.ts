@@ -7,16 +7,17 @@ import { Model, Types } from 'mongoose';
 export class PlatesService {
   constructor(@InjectModel(Plate.name) private plateModel: Model<PlateDocument>) {}
 
-  create(payload: { idElection: string; name: string; number: number }) {
+  async create(payload: { idElection: string; name: string; number: number }) {
     const p = new this.plateModel({ ...payload, idElection: new Types.ObjectId(payload.idElection) });
     return p.save();
   }
 
-  findByElection(idElection: string) {
+  async findByElection(idElection: string | null) {
+    if (!idElection) return this.plateModel.find().lean();
     return this.plateModel.find({ idElection }).lean();
   }
 
-  remove(id: string) {
+  async remove(id: string) {
     return this.plateModel.findByIdAndDelete(id);
   }
 
